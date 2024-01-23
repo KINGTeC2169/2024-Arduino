@@ -3,15 +3,18 @@
 
 Joystick_ stick;
 
+// IMPORTANT ************** READ **************
+// To add a button, change the amountOfButtons variable to be the intended button amount 
+// and the number in the [] to be the same as the aount of buttons
+// then, add the button number in the vector
+int amountOfButtons = 5;
+int buttons[5] = {0, 1, 2, 3, 4};
+
 void setup() {
-  // Intake and outtake (?)
-  pinMode(0, INPUT_PULLUP);
-  pinMode(1, INPUT_PULLUP);
-  // Speed up of shooting thing
-  pinMode(2, INPUT_PULLUP);
-  // Up and down of the arm thing
-  pinMode(3, INPUT_PULLUP);
-  pinMode(4, INPUT_PULLUP);
+  // Loops through the vector of buttons and initializes each one
+  for(int button = 0; button < amountOfButtons; button++){
+    pinMode(buttons[button], INPUT_PULLUP);
+  }
 
   Serial.begin(9600);
   stick.begin();
@@ -19,14 +22,14 @@ void setup() {
 
 void loop() {
   // Checks if each button is pressed or not
-  for(int i = 0; i < 5; i++){
+  for(int button = 0; button < amountOfButtons; button++){
     // Finds the current state of the button
-    int state = digitalRead(i);
-    // IF the button is pressed something happens (idk what, I copied this code)
+    int state = digitalRead(buttons[button]);
+    // IF the button is pressed something happens
     if(state == HIGH){
-      stick.setButton(i, 0);
+      stick.setButton(buttons[button], 0);
     } else{
-      stick.setButton(i, 1);
+      stick.setButton(buttons[button], 1);
     }
   }
   // Wait for 50 ms
