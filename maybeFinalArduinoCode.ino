@@ -7,8 +7,8 @@ Joystick_ stick;
 // To add a button, change the amountOfButtons variable to be the intended button amount 
 // and the number in the [] to be the same as the aount of buttons
 // then, add the button number in the vector
-int amountOfButtons = 5;
-int buttons[5] = {0, 1, 2, 3, 4};
+int amountOfButtons = 9;
+int buttons[9] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
 void setup() {
   // Loops through the vector of buttons and initializes each one
